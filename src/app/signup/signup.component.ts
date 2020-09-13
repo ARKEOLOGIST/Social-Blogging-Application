@@ -12,12 +12,30 @@ export class SignupComponent implements OnInit {
 
   constructor(public fb: FormBuilder) { 
     this.myForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      password: [''],
-      confirmPassword: [''],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required]]
+    },{
+      validator: this.checkIfMatchingPasswords("password","confirmPassword")
     })
+  }
+
+  checkIfMatchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup) => {
+      let password = group.controls[passwordKey];
+      let confirmPassword = group.controls[confirmPasswordKey];
+      if (password == confirmPassword)
+      {
+        return;
+      }
+      else {
+        confirmPassword.setErrors({
+          notEqualToPassword: true
+        })
+      }
+    }
   }
 
   onSubmit(signupform) {

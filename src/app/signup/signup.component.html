@@ -16,7 +16,7 @@
                                     <input type="text" class="form-control" placeholder="Last Name" [formControl]="myForm.controls['lastName']">
                                 </div>
                             </div>
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger" *ngIf="(!myForm.controls['firstName'].valid || !myForm.controls['lastName'].valid) && (myForm.controls['firstName'].touched || myForm.controls['lastName'].touched)">
                                 First and last name are required
                             </div>
                             <div class="form-group">
@@ -25,7 +25,7 @@
                                     We'll never share your email with anyone else
                                 </small>
                             </div>
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger" *ngIf="(!myForm.controls['email'].valid) && (myForm.controls['email'].touched)">
                                 A valid email is required
                             </div>
                             <div class="form-group">
@@ -34,11 +34,14 @@
                             <div class="form-group">
                                 <input type="password" placeholder="Confirm your password" class="form-control" [formControl]="myForm.controls['confirmPassword']">
                             </div>
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger" *ngIf="(!myForm.controls['password'].valid) && (myForm.controls['password'].touched)">
                                 Passwords must be atleast 8 characters each
                             </div>
+                            <div class="alert alert-danger" *ngIf="myForm.controls['confirmPassword'].errors && myForm.controls['confirmPassword'].touched">
+                                Passwords must match
+                            </div>
                             <div class="text-center">
-                                <button type="submit" placeholder="Confirm your password" class="btn btn-block btn-warning">
+                                <button type="submit" placeholder="Confirm your password" class="btn btn-block btn-warning" [disabled]="!myForm.valid">
                                     Submit
                                 </button>
                             </div>
