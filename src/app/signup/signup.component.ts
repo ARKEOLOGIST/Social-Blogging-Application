@@ -30,8 +30,10 @@ export class SignupComponent implements OnInit {
     return (group: FormGroup) => {
       let password = group.controls[passwordKey];
       let confirmPassword = group.controls[confirmPasswordKey];
+      console.log(password);
+      console.log(confirmPassword);
 
-      if (password == confirmPassword)
+      if (password.value == confirmPassword.value)
       {
         return;
       }
