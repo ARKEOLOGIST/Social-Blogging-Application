@@ -1,3 +1,51 @@
 <div class="container">
-
+    <div class="row">
+        <div class="offset-sm-2 col-sm-8">
+            <div class="card text-blank border-0">
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <h5>Sign up for free!</h5>
+                    </div>
+                    <div class="card-text">
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="First Name" [formControl]="myForm.controls['firstName']">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Last Name" [formControl]="myForm.controls['lastName']">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger">
+                                First and last name are required
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Enter your email" class="form-control" [formControl]="myForm.controls['email']">
+                                <small class="form-text text-muted">
+                                    We'll never share your email with anyone else
+                                </small>
+                            </div>
+                            <div class="alert alert-danger">
+                                A valid email is required
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" class="form-control" [formControl]="myForm.controls['password']">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Confirm your password" class="form-control" [formControl]="myForm.controls['confirmPassword']">
+                            </div>
+                            <div class="alert alert-danger">
+                                Passwords must be atleast 8 characters each
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" placeholder="Confirm your password" class="btn btn-block btn-warning">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
