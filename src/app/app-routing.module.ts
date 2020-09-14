@@ -5,9 +5,9 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path: '',component: HomeComponent},
+  {path: '',redirectTo: 'home',pathMatch: 'full'},
+  {path: 'home',component: HomeComponent},
   {path: 'login',component: LoginComponent},
-  {path: 'signup',component: SignupComponent},
   {path: '**',redirectTo: 'home'}
 ];
 
