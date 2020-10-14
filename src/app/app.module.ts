@@ -11,6 +11,12 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { MyblogsComponent } from './myblogs/myblogs.component';
+import { CreateComponent } from './create/create.component';
+
+import { NgxEditorModule } from 'ngx-editor';
+import { HttpClientModule } from '@angular/common/http';
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyDh4L2SHb2bJXy4dnUFYauyQgVNz_2lCjU",
@@ -29,13 +35,17 @@ firebase.initializeApp(firebaseConfig);
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    MyblogsComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEditorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
